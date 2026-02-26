@@ -1,74 +1,262 @@
-/*
----------------------------------------------------------------------------------
-	STRIPPED DOWN RESUME TEMPLATE
-    html resume
+/* =========================================================================
+   Moriah Sherman — Resume Stylesheet
+   Modern, responsive, no external dependencies
+   ========================================================================= */
 
-    v0.9: 5/28/09
+:root {
+    --color-text: #444;
+    --color-heading: #333;
+    --color-accent: #990003;
+    --color-bg: #f5f5f5;
+    --color-border: #ccc;
+    --color-btn: #555;
+    --color-btn-hover: #333;
+    --color-white: #fff;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-heading: Georgia, 'Times New Roman', serif;
+    --max-width: 960px;
+    --section-gap: 2em;
+}
 
-    design and code by: thingsthatarebrown.com 
-                        (matt brown)
----------------------------------------------------------------------------------
-*/
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+/* Base */
+body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: #e8e8e8;
+    -webkit-font-smoothing: antialiased;
+}
 
-.msg { padding: 10px; background: #222; position: relative; }
-.msg h1 { color: #fff;  }
-.msg a { margin-left: 20px; background: #408814; color: white; padding: 4px 8px; text-decoration: none; }
-.msg a:hover { background: #266400; }
+.page {
+    max-width: var(--max-width);
+    margin: 60px auto;
+    padding: 20px 60px;
+    background: var(--color-bg);
+    border-top: 8px solid #666;
+    border-bottom: 2px solid #666;
+}
 
-/* //-- yui-grids style overrides -- */
-body { font-family: Georgia; color: #444; }
-#inner { padding: 10px 80px; margin: 80px auto; background: #f5f5f5; border: solid #666; border-width: 8px 0 2px 0; }
-.yui-gf { margin-bottom: 2em; padding-bottom: 2em; border-bottom: 1px solid #ccc; }
+/* Links */
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
 
-/* //-- header, body, footer -- */
-#hd { margin: 2.5em 0 3em 0; padding-bottom: 1.5em; border-bottom: 1px solid #ccc }
-#hd h2 { letter-spacing: 2px; }
-#bd, #ft { margin-bottom: 2em; }
+a:hover {
+    text-decoration: underline;
+}
 
-/* //-- footer -- */
-#ft { padding: 1em 0 5em 0; font-size: 92%; border-top: 1px solid #ccc; text-align: center; }
-#ft p { margin-bottom: 0; text-align: center;   }
+/* ---- Header ---- */
+header {
+    margin-bottom: var(--section-gap);
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid var(--color-border);
+}
 
-/* //-- core typography and style -- */
-#hd h1 { font-size: 48px; letter-spacing: 3px; }
-h2 { font-size: 175% }
-h3, h4 { font-size: 145%; }
-h1, h2, h3, h4 { color: #333; }
-p { font-size: 130%; line-height: 18px; padding-right: 3em; }
-a { color: #990003 }
-a:hover { text-decoration: none; }
-strong { font-weight: bold; }
-li { line-height: 24px; border-bottom: 1px solid #ccc; }
-p.enlarge { font-size: 144%; padding-right: 6.5em; line-height: 24px; }
-p.enlarge span { color: #000 }
-.contact-info { margin-top: 7px; }
-.first h2 { font-style: italic; }
-.last { border-bottom: 0 }
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1em;
+}
 
+.header-name h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8em;
+    letter-spacing: 2px;
+    color: var(--color-heading);
+    line-height: 1.2;
+}
 
-/* //-- section styles -- */
+.header-name h2 {
+    font-family: var(--font-heading);
+    font-size: 1.3em;
+    font-style: italic;
+    letter-spacing: 1px;
+    color: var(--color-heading);
+    font-weight: normal;
+    margin-top: 0.15em;
+}
 
-a#pdf { display: block; float: left; background: #666; color: white; padding: 6px 50px 6px 12px; margin-bottom: 6px; text-decoration: none;  }
-a#pdf:hover { background: #222; }
+.header-actions {
+    padding-top: 0.5em;
+    flex-shrink: 0;
+}
 
-.job { position: relative; margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc; }
-.job h4 { position: absolute; top: 0.35em; right: 0 }
-.job p { margin: 1em 0 0.25em 0; }
+.btn-pdf {
+    display: inline-block;
+    background: var(--color-btn);
+    color: var(--color-white);
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+}
 
-.last { border: none; }
-.skills-list {  }
-.skills-list ul { margin: 0; }
-.skills-list li { margin: 3px 0; padding: 3px 0; }
-.skills-list li span { font-size: 152%; display: block; margin-bottom: -2px; padding: 0 }
-.talent { width: 32%; float: left }
-.talent h2 { margin-bottom: 6px; }
+.btn-pdf:hover {
+    background: var(--color-btn-hover);
+    text-decoration: none;
+}
 
-#srt-ttab { margin-bottom: 100px; text-align: center;  }
-#srt-ttab img.last { margin-top: 20px }
+/* ---- Sections (two-column: label | content) ---- */
+.section {
+    display: flex;
+    gap: 2em;
+    margin-bottom: var(--section-gap);
+    padding-bottom: var(--section-gap);
+    border-bottom: 1px solid var(--color-border);
+}
 
-/* --// override to force 1/8th width grids -- */
-.yui-gf .yui-u{width:80.2%;}
-.yui-gf div.first{width:12.3%;}
+.section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
 
+.section-label {
+    flex: 0 0 140px;
+}
 
+.section-label h2 {
+    font-family: var(--font-heading);
+    font-size: 1.15em;
+    font-style: italic;
+    color: var(--color-heading);
+    font-weight: normal;
+}
+
+.section-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Lead text (About / Skills) */
+.lead {
+    font-size: 1.05em;
+    line-height: 1.7;
+}
+
+.lead strong {
+    color: #222;
+}
+
+/* ---- Job entries ---- */
+.job {
+    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.job.last,
+.job:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.job h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25em;
+    color: var(--color-heading);
+}
+
+.job h4 {
+    font-size: 1.05em;
+    color: #555;
+    font-weight: normal;
+    margin-top: 0.1em;
+}
+
+.job .date {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 0.15em;
+    margin-bottom: 0.5em;
+}
+
+.job p {
+    margin-top: 0.4em;
+    line-height: 1.6;
+    padding-right: 1em;
+}
+
+/* ---- Footer ---- */
+footer {
+    padding: 1.5em 0 3em;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .page {
+        margin: 0;
+        padding: 20px 24px;
+        border-top-width: 4px;
+    }
+
+    .header-content {
+        flex-direction: column;
+    }
+
+    .header-name h1 {
+        font-size: 2em;
+    }
+
+    .section {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .section-label {
+        flex: none;
+    }
+
+    .job h4 {
+        position: static;
+    }
+
+    .job p {
+        padding-right: 0;
+    }
+}
+
+/* ---- Print ---- */
+@media print {
+    body {
+        background: #fff;
+    }
+
+    .page {
+        margin: 0;
+        padding: 0;
+        border: none;
+        max-width: none;
+    }
+
+    .btn-pdf {
+        display: none;
+    }
+
+    a {
+        color: var(--color-heading);
+    }
+
+    .section {
+        break-inside: avoid;
+    }
+
+    .job {
+        break-inside: avoid;
+    }
+}
