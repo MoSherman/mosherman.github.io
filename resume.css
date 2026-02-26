@@ -108,6 +108,13 @@ header {
     text-decoration: none;
 }
 
+.header-links {
+    margin-top: 0.6em;
+    display: flex;
+    gap: 1em;
+    font-size: 0.9em;
+}
+
 /* ---- Sections (two-column: label | content) ---- */
 .section {
     display: flex;
